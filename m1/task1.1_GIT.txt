@@ -1,0 +1,18 @@
+8e69cbd (HEAD -> master, origin/master, origin/develop, develop) HEAD@{0}: merge develop: Fast-forward
+37030bf HEAD@{1}: checkout: moving from develop to master
+8e69cbd (HEAD -> master, origin/master, origin/develop, develop) HEAD@{2}: commit (merge): fix_commit_conf
+1d04695 (origin/images, images) HEAD@{3}: merge images: Fast-forward
+bddf3da HEAD@{4}: checkout: moving from images to develop
+1d04695 (origin/images, images) HEAD@{5}: checkout: moving from develop to images
+bddf3da HEAD@{6}: checkout: moving from styles to develop
+bf0708c (origin/styles, styles) HEAD@{7}: commit: commit_CHindex
+9fe0ff3 HEAD@{8}: commit: styles_commit
+bddf3da HEAD@{9}: checkout: moving from develop to styles
+bddf3da HEAD@{10}: checkout: moving from images to develop
+1d04695 (origin/images, images) HEAD@{11}: commit: html_commit
+ddd3594 HEAD@{12}: commit: image_commit
+bddf3da HEAD@{13}: checkout: moving from develop to images
+bddf3da HEAD@{14}: commit: index_commit
+37030bf HEAD@{15}: checkout: moving from master to develop
+37030bf HEAD@{16}: commit (initial): first_commit
+
