@@ -4,4 +4,4 @@ I have learned more about Git commands for working with files and creating commi
 
 DevOps  
 I have learned more about Git commands for working with files and creating commits. It was also interesting to practice creating and managing branches, resolving merge conflicts between files.
-Also I gained more knowledge about managing a remote repository.
+Also I have gained more knowledge in managing a remote repository.
