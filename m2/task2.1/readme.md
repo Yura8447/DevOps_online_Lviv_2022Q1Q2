@@ -10,3 +10,5 @@ PART 1. HYPERVISORS
 
 2.Work at different levels
 Type 1 runs on bare metal and Type 2 runs on top of an operating system
+
+The task did not specify where to upload screenshots, so I uploaded them to the screenshots folder
