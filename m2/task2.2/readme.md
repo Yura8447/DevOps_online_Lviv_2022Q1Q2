@@ -1,4 +1,5 @@
 # Task2.2
+# Photo with homework in the screenshots folder
 
 ### Link to my website
 
