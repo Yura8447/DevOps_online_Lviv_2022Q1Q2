@@ -56,12 +56,21 @@ resource "aws_eip" "pipeline" {
   instance = aws_instance.pipeline.id 
 }
 
+data "template_file" "server_script" {
+  template = file("script.sh")
+  vars = {
+    repository_name = data.aws_ssm_parameter.repository_name.value
+    server_username = var.server_username
+  }
+}
+
 resource "aws_instance" "pipeline" {
   ami = data.aws_ami.ubuntu.id
   instance_type = "t4g.small"
   associate_public_ip_address = true
   key_name = aws_key_pair.pipeline.key_name
   vpc_security_group_ids = [aws_security_group.pipeline.id]
+  user_data = data.template_file.server_script.rendered
 
   tags = {
     Name = "pipeline"
