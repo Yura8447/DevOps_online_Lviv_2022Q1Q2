@@ -85,7 +85,7 @@ resource "aws_iam_policy" "pipeline" {
   policy = data.aws_iam_policy_document.pipeline.json
 }
 
-resource "aws_iam_policy_attachment" "pipeline" {
+resource "aws_iam_role_policy_attachment" "pipeline" {
   role = aws_iam_role.pipeline.name
   policy_arn = aws_iam_policy.pipeline.arn
 }
@@ -100,6 +100,10 @@ data "template_file" "server_script" {
     repository_name = data.aws_ssm_parameter.repository_name.value
     server_username = var.server_username
   }
+}
+
+resource "aws_iam_instance_profile" "pipeline" {
+  role = aws_iam_role.pipeline.name
 }
 
 resource "aws_instance" "pipeline" {
