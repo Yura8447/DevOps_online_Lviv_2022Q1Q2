@@ -51,6 +51,44 @@ resource "aws_security_group" "pipeline" {
   }
 }
 
+resource "aws_iam_role" "pipeline" {
+  name = "pipeline_role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+ 
+data "aws_iam_policy_document" "pipeline"{
+  statement {
+    actions = [
+      "s3:PutObject"
+    ]
+    resources = [
+      "${aws_s3_bucket.project_website.arn}/*"
+    ]
+  }
+}
+
+resource "aws_iam_policy" "pipeline" {
+  name = "pipeline-policy"
+  path = "/"
+  policy = data.aws_iam_policy_document.pipeline.json
+}
+
+resource "aws_iam_policy_attachment" "pipeline" {
+  role = aws_iam_role.pipeline.name
+  policy_arn = aws_iam_policy.pipeline.arn
+}
 
 resource "aws_eip" "pipeline" {
   instance = aws_instance.pipeline.id 
@@ -67,6 +105,7 @@ data "template_file" "server_script" {
 resource "aws_instance" "pipeline" {
   ami = data.aws_ami.ubuntu.id
   instance_type = "t4g.small"
+  iam_instance_profile = aws_iam_instance_profile.pipeline.name
   associate_public_ip_address = true
   key_name = aws_key_pair.pipeline.key_name
   vpc_security_group_ids = [aws_security_group.pipeline.id]
