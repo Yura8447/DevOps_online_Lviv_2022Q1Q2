@@ -1,9 +1,0 @@
----
-- name: Main configuration 
-  hosts: localhost
-  connection: local
-  
-
-  roles:
-    - docker
-    - pipeline

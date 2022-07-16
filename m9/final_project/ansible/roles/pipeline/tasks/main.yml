@@ -1,3 +1,0 @@
----
-- name: Start pipeline server
-  import_tasks: start.yml

@@ -1,6 +1,0 @@
----
-- name: Install dependencies
-  import_tasks: install_dependencies.yml
-
-- name: Install Docker
-  import_tasks: install_docker.yml
