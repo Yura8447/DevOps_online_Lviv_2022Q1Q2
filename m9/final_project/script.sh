@@ -13,5 +13,5 @@ HOME_DIRECTORY=/home/${server_username}
 REPOSITORY=$HOME_DIRECTORY/infrastructure_source
 git clone -b master ${repository_name} $REPOSITORY
 
-cd $REPOSITORY/m9/final_project
-ls
+cd $REPOSITORY/m9/final_project/ansible
+ansible-playbook main.yml -v

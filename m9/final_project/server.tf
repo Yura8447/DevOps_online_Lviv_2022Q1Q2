@@ -70,9 +70,15 @@ resource "aws_instance" "pipeline" {
   associate_public_ip_address = true
   key_name = aws_key_pair.pipeline.key_name
   vpc_security_group_ids = [aws_security_group.pipeline.id]
-  user_data = data.template_file.server_script.rendered
+  user_data = base64encode(data.template_file.server_script.rendered)
 
   tags = {
     Name = "pipeline"
   }
+}
+
+resource "local_sensitive_file" "pipeline" {
+  content = tls_private_key.pipeline.private_key_openssh
+  filename = pathexpand("~/.ssh/${aws_key_pair.pipeline.key_name}.pem")
+  file_permission = "0400"
 }

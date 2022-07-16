@@ -1,0 +1,13 @@
+- name: Pull Kenkins Docker image
+  docker_image:
+    name: "{{ jenkins_image }}"
+    source: pull
+
+- name: Deploy container
+  docker_container:
+    name: "{{ jenkins_container_name }}"
+    image: "{{ jenkins_image }}"
+    state: started
+    auto_remove: true
+    ports:
+      - "8080:8080"

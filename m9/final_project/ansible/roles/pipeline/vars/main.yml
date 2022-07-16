@@ -1,0 +1,2 @@
+jenkins_image: jenkins/jenkins
+jenkins_container_name: jenkins-container
